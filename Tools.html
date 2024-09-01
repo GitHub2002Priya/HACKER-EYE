@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Tools</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background-color: #f7f7f7;
+            overflow-y: scroll;
+            overscroll-behavior: contain;
+            background-image: linear-gradient(to right, rgba(230, 174, 222, 0.904), rgba(68, 227, 241, 0.731));
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .logo-container .bold {
+            color: rgb(66, 4, 66);
+            font-size: 60px;
+        }
+
+        .menu-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .menu-buttons button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .container-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 80px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 110%;
+            position: center;
+            justify: center;
+            padding: 80px;
+            background-color: #f9f9f9;
+            border: 5px solid #1db1ad;
+            border-radius: 10px;
+            box-shadow: 8 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container button,
+        .container input[type="text"],
+        .container input[type="file"] {
+            padding: 20px;
+            font-size: 16px;
+            border: 1px solid #32e3c6;
+            border-radius: 5px;
+        }
+
+        .container button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background-color: #0056b3;
+        }
+
+        .container button:active {
+            transform: translateY(1px);
+        }
+
+        .chatBot {
+            border: 3px solid #2F8D46;
+            border-radius: 10px;
+            margin: 50px auto;
+            overflow: hidden;
+            width: 500px;
+            height: 600px;
+            background: rgb(255, 255, 255) url(gfg-gg-logo.svg);
+            background-size: contain;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        header {
+            background-color: #2F8D46;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 7px 7px 0 0;
+        }
+
+        header h2 {
+            color: #fff;
+            margin: 0;
+        }
+
+        .chatbox {
+            padding: 15px;
+            list-style: none;
+            overflow-y: auto;
+            height: 400px;
+        }
+
+        .chatbox li {
+            margin-bottom: 10px;
+        }
+
+        .chat p {
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+
+        .chat-outgoing p {
+            background-color: #162887;
+            align-self: flex-end;
+            color: #ffffff;
+        }
+
+        .chat-incoming p {
+            background-color: #c03e99;
+        }
+
+        .chat-input {
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input textarea {
+            width: 522px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            resize: none;
+            outline: none;
+            overflow-y: scroll;
+            background-color: #dcdcdc85;
+            font-size: 16px;
+            color: green;
+            font-weight: 600;
+            margin-top: -10px;
+            margin-left: -15px;
+            height: 71px;
+        }
+
+        #cross {
+            float: right;
+            position: relative;
+            top: -38px;
+            left: -15px;
+            cursor: pointer;
+            color: white;
+            font-weight: bolder;
+            font-size: 28px;
+        }
+
+        #cross:hover {
+            color: red;
+            transition: all .5s;
+        }
+
+        .chatbox .chat p.error {
+            color: #ffffff;
+            background-color: #e1457ce8;
+        }
+
+        #sendBTN {
+            width: 100%;
+            padding: 8px;
+            border: 0;
+            outline: none;
+            font-size: 20px;
+            font-weight: 600;
+            border-radius: 7px;
+            background-color: #2F8D46;
+            cursor: pointer;
+            color: white;
+            margin-top: 12px;
+        }
+
+        .lastMessage {
+            margin-top: 50px;
+            font-size: 35px;
+            font-weight: 600;
+            color: darkgreen;
+            margin-left: 550px;
+        }
+
+        .btn {
+            cursor: pointer;
+            position: relative;
+            padding: 10px 20px;
+            background: white;
+            font-size: 28px;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            transition: all 1s;
+        }
+
+        .btn:after, .btn:before {
+            content: " ";
+            width: 10px;
+            height: 10px;
+            position: absolute;
+            border: 0px solid #fff;
+            transition: all 1s;
+        }
+
+        .btn:after {
+            top: -1px;
+            left: -1px;
+            border-top: 5px solid black;
+            border-left: 5px solid black;
+        }
+
+        .btn:before {
+            bottom: -1px;
+            right: -1px;
+            border-bottom: 5px solid black;
+            border-right: 5px solid black;
+        }
+
+        .btn:hover {
+            border-top-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+        }
+
+        .btn:hover:before, .btn:hover:after {
+            width: 100%;
+            height: 100%;
+        }
+
+        .data-container {
+            background: #ffebee;
+            height: 100vh;
+            scale: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer {
+            background-color: #1a3be1;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer h3 {
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        .footer .socials {
+            margin-top: 20px;
+        }
+
+        .footer .socials a {
+            margin-right: 10px;
+            display: inline-block;
+        }
+
+        .footer .socials img {
+            width: 30px;
+            height: 30px;
+            vertical-align: middle;
+            transition: transform 0.3s;
+        }
+
+        .footer .socials img:hover {
+            transform: scale(1.1);
+        }
+
+        .footer-bar {
+            padding: 10px 0;
+            background-color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="logo-container">
+        <img src="E:\webDevelopment\Hacker-Eye\img\logo@.png" height="120px" width="120px" alt="logo">
+        <strong class="bold">HackerEye</strong>
+    </div>
+
+    <div class="menu-buttons" id="menuButtons">
+        <button onclick="location.href='home.html'">Home</button>
+        <button onclick="location.href='about.html'">About</button>
+        <button onclick="location.href='tools.html'">Tools</button>
+        <button onclick="location.href='contact.html'">Contact</button>
+        <button onclick="location.href='premium.html'">Premium</button>
+        <button onclick="location.href='feedback.html'">Feedback</button>
+    </div>
+
+    <div class="container-wrapper">
+        <img src="E:\webDevelopment\Hacker-Eye\img\system-removebg-preview.png" alt="system" width="400px" height="500px">
+
+        <center>
+ 
+        <div class="container">
+            <button class="btn">File</button>
+            <button class="btn">URL</button>
+            <button class="btn">Search</button>
+            <br>
+            <br>
+            <br>
+
+            <form action="https://www.google.com/search" method="get" target="_blank">
+                <input type="text" id="search" name="q" placeholder="what to know...">
+                <input type="submit" value="Search">
+            </form>
+            <br>
+            <input type="file" id="fileInput" />
+            <button class="btn" type="button" onclick="createFile()">Create File</button>
+            <br>
+            <br>
+            <br>
+            <input type="text" id="urlInput" placeholder="Enter URL" />
+            <button class="btn" type="button" onclick="openURL()">Go to URL</button>
+        </div>
+    </div>
+</center>
+
+    <div class="chatBot">
+        <header>
+            <h2>ChatBot</h2>
+            <span alt="Close" id="cross" onclick="cancel()">X</span>
+        </header>
+        <ul class="chatbox" id="chatbox">
+            <li class="chat-incoming chat">
+                <p>Hey! How can I assist you today?</p>
+            </li>
+        </ul>
+        <br>
+        <div class="chat-input">
+            <textarea id="messageInput" placeholder="Enter a message..."></textarea>
+            <button id="sendBTN" class="btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>Hacker Eye</h3>
+                <p>Stay secure, stay vigilant.</p>
+            </div>
+            <div class="socials">
+                <a href="https://facebook.com" target="_blank" class="social-icon">
+                    <img src="/img/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                    <img src="/img/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://youtube.com" target="_blank" class="social-icon">
+                    <img src="/img/youtbe (1).png" alt="YouTube">
+                </a>
+                <a href="https://skype.com" target="_blank" class="social-icon">
+                    <img src="/img/skype@.png" alt="Skype">
+                </a>
+                <a href="https://twitter.com" target="_blank" class="social-icon">
+                    <img src="/img/twitter@.png" alt="Twitter">
+                </a>
+            </div>
+        </div>
+        <div class="footer-bar">
+            <p>&copy; 2024 HackerEye. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function createFile() {
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput.files.length > 0) {
+                const file = fileInput.files[0];
+                // Process the file
+                console.log(`File chosen: ${file.name}`);
+            } else {
+                console.log('No file chosen');
+            }
+        }
+
+        function openURL() {
+            const urlInput = document.getElementById('urlInput');
+            const url = urlInput.value;
+            if (url) {
+                window.open(url, '_blank');
+            } else {
+                console.log('No URL entered');
+            }
+        }
+
+        function cancel() {
+            document.querySelector('.chatBot').style.display = 'none';
+        }
+
+        function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const chatbox = document.getElementById('chatbox');
+            const message = messageInput.value.trim();
+            
+            if (message) {
+                // Add user message to chat
+                const userMessage = document.createElement('li');
+                userMessage.className = 'chat-outgoing chat';
+                userMessage.innerHTML = `<p>${message}</p>`;
+                chatbox.appendChild(userMessage);
+                
+                // Add bot response
+                const botResponse = document.createElement('li');
+                botResponse.className = 'chat-incoming chat';
+                botResponse.innerHTML = `<p>Thank you for your cooperation!: "${message}"</p>`;
+                chatbox.appendChild(botResponse);
+                
+                // Clear input
+                messageInput.value = '';
+                messageInput.focus();
+                
+                // Scroll to bottom
+                chatbox.scrollTop = chatbox.scrollHeight;
+            }
+        }
+    </script>
+</body>
+
+</html>

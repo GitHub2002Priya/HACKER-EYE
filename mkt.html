@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css">
+<title>Login Page</title>
+    <!-- Include necessary CSS and JavaScript files -->
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+
+    <!-- Optional: If you need the OpenAI API integration, include it here -->
+    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+ <!-- Your login form and other content -->
+    <div class="login-form">
+        <h2>Login</h2>
+        <form action="/submit-login" method="POST">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <!-- ChatBot container -->
+    <div class="chatBot">
+        <header>
+            <h2>ChatBot</h2>
+            <span id="cross" onclick="cancel()">X</span>
+        </header>
+        <ul class="chatbox">
+            <li class="chat-incoming chat">
+                <p>Hey! How can I assist you today?</p>
+            </li>
+        </ul>
+        <div class="chat-input">
+            <textarea rows="1" cols="17" placeholder="Enter a message..."></textarea>
+            <button id="sendBTN">Send</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for chat functionality -->
+    <script>
+        const chatInput = document.querySelector('.chat-input textarea');
+        const sendChatBtn = document.querySelector('.chat-input button');
+        const chatbox = document.querySelector(".chatbox");
+
+        let userMessage;
+        const API_KEY = "YOUR_OPENAI_API_KEY"; // Replace with your actual OpenAI API key
+
+        const createChatLi = (message, className) => {
+            const chatLi = document.createElement("li");
+            chatLi.classList.add("chat", className);
+            let chatContent = className === "chat-outgoing" ? `<p>${message}</p>` : `<p>${message}</p>`;
+            chatLi.innerHTML = chatContent;
+            return chatLi;
+        }
+
+        const generateResponse = (incomingChatLi) => {
+            const API_URL = "https://api.openai.com/v1/chat/completions";
+            const messageElement = incomingChatLi.querySelector("p");
+            const requestOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    "model": "gpt-3.5-turbo",
+                    "messages": [
+                        {
+                            role: "user",
+                            content: userMessage
+                        }
+                    ]
+                })
+            };
+
+            fetch(API_URL, requestOptions)
+                .then(res => {
+                    if (!res.ok) {
+                        throw new Error("Network response was not ok");
+                    }
+                    return res.json();
+                })
+                .then(data => {
+                    messageElement.textContent = data.choices[0].message.content;
+                })
+                .catch((error) => {
+                    messageElement.classList.add("error");
+                    messageElement.textContent = "Error: Please try again later.";
+                })
+                .finally(() => chatbox.scrollTo(0, chatbox.scrollHeight));
+        };
+
+        const handleChat = () => {
+            userMessage = chatInput.value.trim();
+            if (!userMessage) {
+                return;
+            }
+            chatbox.appendChild(createChatLi(userMessage, "chat-outgoing"));
+            chatbox.scrollTo(0, chatbox.scrollHeight);
+
+            setTimeout(() => {
+                const incomingChatLi = createChatLi("Thinking...", "chat-incoming");
+                chatbox.appendChild(incomingChatLi);
+                chatbox.scrollTo(0, chatbox.scrollHeight);
+                generateResponse(incomingChatLi);
+            }, 600);
+        }
+
+        sendChatBtn.addEventListener("click", handleChat);
+
+        function cancel() {
+            let chatbotcomplete = document.querySelector(".chatBot");
+            if (chatbotcomplete.style.display != 'none') {
+                chatbotcomplete.style.display = "none";
+                let lastMsg = document.createElement("p");
+                lastMsg.textContent = 'Thanks for using our Chatbot!';
+                lastMsg.classList.add('lastMessage');
+                document.body.appendChild(lastMsg);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
