@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews Dashboard</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        background-image: linear-gradient(to right, rgba(230, 174, 222, 0.904), rgba(68, 227, 241, 0.731));
+        overflow-y: scroll;
+        overscroll-behavior: contain;
+      }
+      
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #565353;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #6c6b6b;
+      }
+  
+      .logo-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+        color: white;
+        font-size: 200%;
+      }
+  
+      .logo-container img {
+        margin-right: 10px;
+      }
+  
+      strong {
+        text-align: center;
+        font-size: 150%;
+      }
+      
+      .bold {
+        color: rgb(66, 4, 66);
+        font-size: 60px;
+      }
+  
+      .menu-buttons {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+  
+      .menu-buttons button {
+        background-color: #007bff;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: filter 0.3s ease, color 0.3s ease;
+      }
+  
+      .menu-buttons button.blur {
+        filter: blur(3px);
+      }
+  
+      .menu-buttons button.black-text {
+        color: #000;
+      }
+      
+   
+        .container {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #263238;
+            color: rgb(255, 255, 255);
+            padding: 20px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .filters {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .filter-label {
+            margin-right: 10px;
+        }
+
+        .filter-value {
+            color: #777;
+        }
+
+        .review {
+            border: 1px solid #3b1166;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .review-user {
+            display: flex;
+            align-items: center;
+        }
+
+        .review-user-image {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .review-user-name {
+            font-weight: bold;
+        }
+
+        .review-rating {
+            display: flex;
+            align-items: center;
+        }
+
+        .review-rating-star {
+            color: rgba(19, 204, 2, 0.625);
+            font-size: 40px;
+        }
+
+        .review-content {
+            margin-top: 10px;
+        }
+
+        .review-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .review-action {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #eeeeee;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .review-action.active {
+            background-color: #702abb;
+        }
+
+        .review-comments {
+            margin-top: 10px;
+        }
+
+        .review-comment {
+            border: 1px solid #4e23d2;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 3px;
+        }
+
+        .review-comment-user {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .review-comment-content {
+            margin-top: 5px;
+        }
+
+        .review-comment-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+        }
+
+        .review-comment-action {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #eee;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .review-comment-action.active {
+            background-color: #292424;
+        }
+
+        .review-comment-date {
+            color: #1b1a1a;
+            font-size: 12px;
+        }
+
+        .footer {
+          background-color: #1a3be1;
+          color: #ffffff;
+          padding: 30px 2px;
+          text-align: center;
+      }
+      .footer h3 {
+          margin-bottom: 20px;
+      }
+      .footer p {
+          margin-bottom: 10px;
+      }
+      .footer .socials {
+          margin-top: 10px;
+      }
+      .footer .socials a {
+          margin-right: 8px;
+          font-size: 20px;
+          color: #ffffff;
+      }
+      .footer-bar {
+          padding: 10px 0;
+          background-color: rgb(7, 7, 77);
+        }
+    </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="img/logo@.png" height="120px" width="120px" alt="logo">
+    <strong class="bold">Hacker Eye</strong>
+  </div>
+
+  <div class="menu-buttons" id="menuButtons">
+    <button onclick="location.href='home.html'">Home</button>
+    <button onclick="location.href='about.html'">About</button>
+    <button onclick="location.href='tools.html'">Tools</button>
+    <button onclick="location.href='contact.html'">Contact</button>
+    <button onclick="location.href='premium.html'">Premium</button>
+    <button onclick="location.href='feedback.html'">Feedback</button>
+  </div>
+  
+    <div class="container">
+        <div class="sidebar">
+            <h1>Reviews</h1>
+            <p>All about the reviews is here</p>
+            <div class="filters">
+                <div class="filter-item">
+                    <label class="filter-label" for="all-reviews">All reviews</label>
+                    <span class="filter-value" id="all-reviews">1,100</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="new-reviews">New reviews</label>
+                    <span class="filter-value" id="new-reviews">210</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="business-reviews">Business reviews</label>
+                    <span class="filter-value" id="business-reviews">310</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="product-reviews">Product reviews</label>
+                    <span class="filter-value" id="product-reviews">812</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label">Star ratings</label>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="5-star">5 star</label>
+                    <span class="filter-value" id="5-star">313</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="4-star">4 star</label>
+                    <span class="filter-value" id="4-star">407</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="3-star">3 star</label>
+                    <span class="filter-value" id="3-star">61</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="2-star">2 star</label>
+                    <span class="filter-value" id="2-star">8</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="1-star">1 star</label>
+                    <span class="filter-value" id="1-star">3</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label">Platforms</label>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="facebook">Facebook</label>
+                    <span class="filter-value" id="facebook">1,100</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="yelp">Yelp</label>
+                    <span class="filter-value" id="yelp">720</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="google-maps">Google maps</label>
+                    <span class="filter-value" id="google-maps">811</span>
+                </div>
+                <div class="filter-item">
+                    <label class="filter-label" for="etsy">Etsy</label>
+                    <span class="filter-value" id="etsy">431</span>
+                </div>
+            </div>
+        </div>
+        <div class="content">
+            <div class="review">
+                <div class="review-header">
+                    <div class="review-user">
+                        <img class="review-user-image" src="https://via.placeholder.com/40" alt="User Avatar">
+                        <div class="review-user-name">Martin Quez</div>
+                        <div class="review-user-verified">Verified</div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                </div>
+                <div class="review-actions">
+                    <button class="review-action">Publish</button>
+                    <button class="review-action">Assign to product</button>
+                    <button class="review-action">Delete</button>
+                </div>
+                <div class="review-comments">
+                    <div class="review-comment">
+                        <div class="review-comment-user">Gladiator</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-actions">
+                            <button class="review-comment-action">Publish</button>
+                            <button class="review-comment-action">Delete</button>
+                        </div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                    <div class="review-comment">
+                        <div class="review-comment-user">Ricard</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <div class="review-user">
+                        <img class="review-user-image" src="https://via.placeholder.com/40" alt="User Avatar">
+                        <div class="review-user-name">Leo Lowe</div>
+                        <div class="review-user-verified">Verified</div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                </div>
+                <div class="review-actions">
+                    <button class="review-action">Publish</button>
+                    <button class="review-action">Assign to product</button>
+                    <button class="review-action">Delete</button>
+                </div>
+                <div class="review-comments">
+                    <div class="review-comment">
+                        <div class="review-comment-user">Gladiator</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-actions">
+                            <button class="review-comment-action">Publish</button>
+                            <button class="review-comment-action">Delete</button>
+                        </div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                    <div class="review-comment">
+                        <div class="review-comment-user">Ricard</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <div class="review-user">
+                        <img class="review-user-image" src="https://via.placeholder.com/40" alt="User Avatar">
+                        <div class="review-user-name">Gene Black</div>
+                        <div class="review-user-verified">Verified</div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                </div>
+                <div class="review-actions">
+                    <button class="review-action">Publish</button>
+                    <button class="review-action">Assign to product</button>
+                    <button class="review-action">Delete</button>
+                </div>
+                <div class="review-comments">
+                    <div class="review-comment">
+                        <div class="review-comment-user">Gladiator</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-actions">
+                            <button class="review-comment-action">Publish</button>
+                            <button class="review-comment-action">Delete</button>
+                        </div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                    <div class="review-comment">
+                        <div class="review-comment-user">Ricard</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <div class="review-user">
+                        <img class="review-user-image" src="https://via.placeholder.com/40" alt="User Avatar">
+                        <div class="review-user-name">Phillip Delgado</div>
+                        <div class="review-user-verified">Verified</div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                </div>
+                <div class="review-actions">
+                    <button class="review-action">Publish</button>
+                    <button class="review-action">Assign to product</button>
+                    <button class="review-action">Delete</button>
+                </div>
+                <div class="review-comments">
+                    <div class="review-comment">
+                        <div class="review-comment-user">Gladiator</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-actions">
+                            <button class="review-comment-action">Publish</button>
+                            <button class="review-comment-action">Delete</button>
+                        </div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                    <div class="review-comment">
+                        <div class="review-comment-user">Ricard</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <div class="review-user">
+                        <img class="review-user-image" src="https://via.placeholder.com/40" alt="User Avatar">
+                        <div class="review-user-name">Patrick Miller</div>
+                        <div class="review-user-verified">Verified</div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                </div>
+                <div class="review-actions">
+                    <button class="review-action">Publish</button>
+                    <button class="review-action">Assign to product</button>
+                    <button class="review-action">Delete</button>
+                </div>
+                <div class="review-comments">
+                    <div class="review-comment">
+                        <div class="review-comment-user">Gladiator</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-actions">
+                            <button class="review-comment-action">Publish</button>
+                            <button class="review-comment-action">Delete</button>
+                        </div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                    <div class="review-comment">
+                        <div class="review-comment-user">Ricard</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                </div>
+            </div>
+            <div class="review">
+                <div class="review-header">
+                    <div class="review-user">
+                        <img class="review-user-image" src="https://via.placeholder.com/40" alt="User Avatar">
+                        <div class="review-user-name">Roger Reese</div>
+                        <div class="review-user-verified">Verified</div>
+                    </div>
+                    <div class="review-rating">
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                        <span class="review-rating-star">★</span>
+                    </div>
+                </div>
+                <div class="review-content">
+                    <p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
+                </div>
+                <div class="review-actions">
+                    <button class="review-action">Publish</button>
+                    <button class="review-action">Assign to product</button>
+                    <button class="review-action">Delete</button>
+                </div>
+                <div class="review-comments">
+                    <div class="review-comment">
+                        <div class="review-comment-user">Gladiator</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-actions">
+                            <button class="review-comment-action">Publish</button>
+                            <button class="review-comment-action">Delete</button>
+                        </div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                    <div class="review-comment">
+                        <div class="review-comment-user">Ricard</div>
+                        <div class="review-comment-content">Lorem ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        <div class="review-comment-date">20 Aug 2020</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br>
+
+<br>
+
+<!-- <footer class="footer">
+  <div class="footer__container">
+    <div class="footer__col">
+      <h3>Hacker Eye</h3>
+      <p>Stay secure, stay vigilant.</p>
+    </div>
+    <div class="socials">
+      <a href="https://facebook.com"><img class="fab fa-facebook"   src="/img/facebook.png" width="20px" height="20px"/>
+      <div href="https://instagram.com"><img class="fab fa-instagram"  src="/img/instagram.png" width="20px" height="20px"/>
+      <a href="https://youtube.com"><img class="fab fa-youtube" src="/img/youtbe (1).png" width="20px" height="20px"/>
+      <a href="https://skype.com"><img class="fab fa-skype" src="/img/skype@.png" width="20px" height="20px"/>
+      <a href="https://twitter.com"><img class="fab fa-twitter" src="/img/twitter@.png" width="20px" height="20px"/>
+      </a>
+    </div>
+  <div class="footer_bar">
+    <p>Copyright © 2024 HackerEye. All rights reserved.</p>
+  </div>
+</div> -->
+
+
+<footer class="footer">
+  <div class="footer-container">
+      <div class="footer-col">
+          <h3>Hacker Eye</h3>
+          <p>Stay secure, stay vigilant.</p>
+      </div>
+      <div class="socials">
+          <a href="https://facebook.com" target="_blank">
+              <img src="/img/facebook.png" width="30px" height="30px" alt="Facebook">
+          </a>
+          <a href="https://instagram.com" target="_blank">
+              <img src="/img/instagram.png" width="30px" height="30px" alt="Instagram">
+          </a>
+          <a href="https://youtube.com" target="_blank">
+              <img src="/img/youtbe (1).png" width="30px" height="30px" alt="YouTube">
+          </a>
+          <a href="https://skype.com" target="_blank">
+              <img src="/img/skype@.png" width="30px" height="30px" alt="Skype">
+          </a>
+          <a href="https://twitter.com" target="_blank">
+              <img src="/img/twitter@.png" width="30px" height="30px" alt="Twitter">
+          </a>
+      </div>
+  </div>
+  <div class="footer-bar">
+      <p>&copy; 2024 HackerEye. All rights reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
