@@ -1,0 +1,266 @@
+similar website links for understanding reference: 
+1) https://www.virustotal.com/gui/home/upload
+2) https://hackerseye.net/
+
+
+
+
+
+HACKER EYE Website:   This website will analyze malicious link is present in the URLs or not.
+  
+  1.  This  website will make us know that the link is malicious or not and Hacker Eye itself does not create websites; it primarily serves as a platform for analyzing and understanding potential security threats .
+
+2. And  also if we send our data links like - email,  or other photos or any files of social media platform how much dublicate data is available in social platforms and if it exist how to delete and recover it.                                                                                                                                                                                                                                                                                                   
+
+
+note: 
+There are AI-powered solutions and algorithms designed to detect malicious links and assist in managing data security, but they usually involve complex algorithms and analysis of patterns rather than a single website that can comprehensively handle all aspects of data security.
+
+
+
+features of  Hacker Eye website :
+1. Detect malicious links
+2. data tracking
+3. Link analysis
+4. Recovery Asistance
+5. content moderation
+
+
+
+1. Detect malicious links:  Hacker Eye provides a capability to identify and flag malicious links. Whether it’s a phishing attempt or a harmful URL, this feature helps users stay vigilant and avoid potential security risks.
+
+purposes:
+
+     - Phishing Attacks: Cybercriminals create malicious URLs to trick users into revealing personal information (such as login credentials) or to carry out identity theft.
+
+     - Malware Distribution: Malicious URLs can lead to the download of harmful software (such as ransomware, viruses, or trojans) onto users' devices.
+
+     - Remote Access Trojans (RATs): Some URLs enable attackers to remotely control victims' computers, potentially creating botnets for further exploitation.
+
+     - Legitimate Domains: Malicious links can be created on both fake and legitimate websites**, making them harder to detect.
+
+     - Delivery Methods: These URLs are delivered via emails, websites, advertisements, and other channels¹⁴.
+
+ 
+ Examples of Malicious URLs:
+   Let's take a quick look at three examples:
+
+  i). Phishing Email: Scammers send emails with deceptive links, pretending to be from legitimate sources (e.g., banks, service providers). Hovering over the link reveals the actual malicious URL.
+        - For instance, an email claiming an issue with your account might lead to a phishing website that steals your login credentials⁵.
+     
+ii). Spoofed Domains: Attackers create URLs that mimic well-known domains (e.g., att.com). Users unknowingly click on these links, leading to malicious content.
+     
+iii). Malware Downloads: Some URLs directly initiate downloads of harmful software without the user's awareness⁵.
+
+iv). Defending Against Malicious Links:
+   As a user or website owner, consider the following precautions:
+
+     - Hover Over Links: Always **hover your mouse** over a link to inspect the actual URL before clicking.
+
+     - Verify Domains: Check if the domain matches the claimed destination.
+
+     - Stay Informed: Be aware of common phishing tactics and stay updated on security best practices.
+
+     - Use Security Software: Employ reliable security tools to detect and block malicious URLs.
+
+     - Educate Users: Educate employees and users about the risks of clicking on suspicious links⁵⁷.
+
+
+
+
+
+2) Data Tracking: The platform allows users to track data, which can be useful for various purposes. Whether it’s monitoring website traffic, analyzing user behavior, or understanding trends, data tracking assists in making informed decisions.
+
+some tools of data tracking:
+
+  a) HubSpot Operations Hub: This tool combines a complete operations platform with a CRM, allowing seamless integration of customer data across your business.
+
+  b) Google Analytics: Widely used for tracking website engagement, audience behaviors, and digital marketing efforts.
+
+  c) Segment: Segment employs cookies and JavaScript to analyze site traffic, deliver personalized ads, and enhance browsing experiences.
+
+
+3) Link Analysis: Hacker Eye performs link analysis to dissect and understand the relationships between different web links. This can be crucial for cybersecurity professionals, researchers, or anyone seeking insights into the web’s interconnectedness.
+
+
+
+4) Recovery Assistance: In case of security breaches or incidents, Hacker Eye offers recovery assistance. Whether it’s restoring compromised data, mitigating the impact of an attack, or assisting with incident response, this feature aids in recovering from security incidents.
+
+
+5) Content Moderation: Hacker Eye also provides content moderation capabilities. This involves monitoring and managing user-generated content, ensuring compliance with guidelines, and maintaining a safe online environment.
+
+                                             
+note: While AI is a powerful tool in data security, it often works in conjunction with human oversight and intervention. It's crucial to maintain good practices, such as regularly reviewing privacy settings, being cautious about sharing sensitive information, and staying informed about potential risks.
+
+
+
+
+
+features of  Hacker Eye website :
+1. Detect malicious links:
+
+  - A malicious URL is a clickable link that directs users to a malicious or fraudulent web page or website.
+   - These URLs are designed with harmful intent, aiming to achieve
+
+ various nefarious(wicked or criminal) 
+
+
+
+
+help sites:(for data download)
+~ Skitlearn
+~Kaggle(data set or database download site)
+
+
+
+
+
+Several online tools and antivirus software offer URL scanning services to check the safety of a website or a specific web page. 
+
+Here are some examples of antiviruses software:
+
+1) VirusTotal:
+URL: VirusTotal
+Description: VirusTotal is a widely-used online service that allows you to scan URLs or files using multiple antivirus engines. It provides a comprehensive analysis of potential threats.
+
+2) Google Safe Browsing:
+URL: Google Safe Browsing
+Description: Google Safe Browsing is a service provided by Google that helps protect users from phishing and malware websites. It is integrated into various web browsers.
+
+3) Norton Safe Web:
+URL: Norton Safe Web
+Description: Norton Safe Web, by Norton (Symantec), provides website reputation and safety information. It scans websites for malware and phishing threats.
+
+4) McAfee WebAdvisor:
+URL: McAfee WebAdvisor
+Description: McAfee WebAdvisor offers browser extensions that provide information about the safety of websites by checking for malware and phishing risks.
+
+5) Bitdefender TrafficLight:
+URL: Bitdefender TrafficLight
+Description: Bitdefender TrafficLight is a browser extension that scans web pages for threats and warns users about potentially malicious content.
+
+6) Kaspersky Threat Intelligence Portal:
+URL: Kaspersky Threat Intelligence Portal
+Description: Kaspersky's Threat Intelligence Portal provides various security tools, including URL scanning services, to check the 
+
+
+
+process steps to know andaaaaaa implement:
+1. have to know what are the cyber attacks are there
+2. have to know what are the cyber security tools or antivirus tools are there
+3. have to know the algorithms in cyber security that can help to find malicios urls.
+4. have to know what are the malicious urls are present and for future threat urls by taking help of antivirus software we can check the urls.
+5. create the excel sheet of the all malicious urls.
+6. by gathering all information create ppt.
+7. create then website
+8. Execute website
+
+
+
+Technology used:
+Frontend: HTML, CSS, JAVASCRIPT
+Backend: Python (Flask webframe work)
+Programming Language: Machine Learning
+Database: (NoSql) MongoDB
+
+
+
+
+Things to know: 
+
+ "vulnerable" refers to a weakness or flaw in a system, application, or network that can be exploited by a threat actor to compromise the security of the system. Vulnerabilities are unintentional errors or oversights in software or hardware that may allow unauthorized access, data breaches, or other malicious activities.
+
+Software Vulnerabilities can be: Bugs, coding errors, or design flaws in software applications.
+
+
+
+
+
+HACKER EYE employs a variety of machine learning algorithms to enhance its malware detection capabilities. 
+Some of these algorithms include:
+
+1. CrowdStrike's Machine Learning Engine:
+
+   - This engine, integrated with **VirusTotal**, is the **first fully machine learning-based engine** within the platform.
+
+   - It extracts high-level characteristics (features) from analyzed files and provides a confidence score indicating the likelihood that a file is malware.
+
+2. Other Machine Learning Algorithms for Malware Detection:
+   - Decision Trees: Algorithms like ID3,C5.0, and others build decision trees based on features.
+
+   - Ensemble Learning: Techniques like Random Forest, AdaBoost, and  XGBoost combine multiple models.
+
+   - Support Vector Machines (SVM): SVMs find hyperplanes to separate different classes.
+
+   - Naive Bayes: Useful for text classification.
+
+   - Gaussian Processes: Used for regression and classification.
+
+   - Hidden Markov Models (HMMs): Model sequences of events.
+
+   - Deep Learning: Techniques like Convolutional Neural Networks (CNNs) and Recurrent Neural Networks (RNNs) can also be applied to malware detection.
+
+
+note: 
+These algorithms focus on analyzing file features rather than creating websites. Keep in mind that Hacker Eye itself does not create websites; it primarily serves as a platform for analyzing and understanding potential security threats .
+
+
+
+Several online tools and antivirus software offer URL scanning services to check the safety of a website or a specific web page. Here are some examples:
+
+VirusTotal:
+URL: VirusTotal
+Description: VirusTotal is a widely-used online service that allows you to scan URLs or files using multiple antivirus engines. It provides a comprehensive analysis of potential threats.
+
+Google Safe Browsing:
+URL: Google Safe Browsing
+Description: Google Safe Browsing is a service provided by Google that helps protect users from phishing and malware websites. It is integrated into various web browsers.
+
+Norton Safe Web:
+URL: Norton Safe Web
+Description: Norton Safe Web, by Norton (Symantec), provides website reputation and safety information. It scans websites for malware and phishing threats.
+
+McAfee WebAdvisor:
+URL: McAfee WebAdvisor
+Description: McAfee WebAdvisor offers browser extensions that provide information about the safety of websites by checking for malware and phishing risks.
+
+Bitdefender TrafficLight:
+URL: Bitdefender TrafficLight
+Description: Bitdefender TrafficLight is a browser extension that scans web pages for threats and warns users about potentially malicious content.
+
+Kaspersky Threat Intelligence Portal:
+URL: Kaspersky Threat Intelligence Portal
+Description: Kaspersky's Threat Intelligence Portal provides various security tools, including URL scanning services, to check the reputation of websites.
+
+
+
+
+WP-Database-Anti-Malware-SQL
+/WP SQL Rescue.sql
+I used these SQL queries in order to identify and remove malware added to some of my websites via SQL injection. If you ever run into a Wordpress Site redirect hack, feel free to use it in order to clean your database, also feel free to send your own list of malicious URLs/scripts, so we can get rid of this pest.
+
+
+
+What is in a HAR file?
+
+HAR is the short form for HTTP ARchive format, which tracks all the logging of web browser's interaction with a site.
+
+
+malcrawler:
+
+This tools crawls a list of potentially malicious URLs and extracts indicators from the resulting HAR files.
+
+Before running the tool, create a .harcollector directory in your home directory. You will then need to put the Firebug and netExport .xpi files in that directory. In addition, please move the mime.types file from the repository to that directory.
+
+
+
+
+Steps-wise to perform:
+
+1. have to know what are the cyber attacks are there
+2. have to know what are the cyber security tools or antivirus tools are there
+3. have to know the algorithms in cyber security that can help to find malicios urls.
+4. have to know what are the malicious urls are present and for future thraet urls by taking help of antivirus software we can check the urls.
+5. create the excel sheet of the all malicious urls.
+6. by gathering all information create ppt.
+7. create then website

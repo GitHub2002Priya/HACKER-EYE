@@ -1,0 +1,175 @@
+------------HACKER EYE----------------
+
+INTRODUCTION
+
+Hacker Eye is a valuable online website.
+By the name Hacker Eye we can get to know that this website keep eye on the user things to provide security and safety to the user .
+Website will provide us the security for accessing URLs and files that will make us know the file or URL malicious present or absent.
+The platform allows users to check for viruses that their own antivirus software might have missed or to verify against false positives. 
+
+Dynamic Malware Analysis: Website employs the Cuckoo sandbox for dynamic analysis of malware. This process identifies malicious behavior and patterns in suspicious files.
+
+
+In the context of **dynamic malware analysis**, the process described involves using the **Cuckoo sandbox**. Let's break down the meaning:
+
+1. Dynamic Malware Analysis:
+
+   -> Malware refers to malicious software designed to harm computer systems, steal data, or disrupt normal operations.
+
+   -> Dynamic analysis is a technique used to understand how malware behaves when executed. Unlike static analysis (which examines the code without execution), dynamic analysis observes the actual behavior of malware during runtime.
+
+   -> During dynamic analysis, the malware is executed in a controlled environment, and its actions are monitored and analyzed.
+
+
+2. Cuckoo Sandbox:
+   -> The Cuckoo sandbox is an open-source platform for automated malware analysis.
+
+   -> It provides an isolated environment (the "sandbox") where suspicious files can be executed safely.
+
+   -> When a file (potentially containing malware) is submitted to Cuckoo, it runs the file and monitors its behavior.
+
+   -> Cuckoo records system calls, network traffic, file modifications, and other activities to identify any malicious behavior.
+
+3. Identifying Malicious Behavior and Patterns:
+
+   During dynamic analysis, Cuckoo looks for specific indicators of malicious intent:
+
+     -> Network Activity: Does the malware communicate with external servers? If so, what data is exchanged.
+
+     -> File System Changes: Does the malware create, modify, or delete files on the system.
+
+     -> Registry Modifications: Does it alter system settings or registry keys?.
+     -> Process Behavior: How does the malware interact with other processes.
+
+     -> API Calls: Which system functions does it invoke.
+
+
+In summary, dynamic malware analysis using the Cuckoo sandbox helps security professionals understand how malware operates, detect malicious behavior, and develop effective countermeasures.
+
+
+
+
+
+
+Objectives Of The Project:
+
+-> HACKER EYE Website is used to identify and scan the URLs and files caring harmful or malicious viruses or not. It shows the output that the files or URLs what we want to check that it safe or not for accessing.
+ 
+-> The project is selected for helping people to detect the URLs or Files are malicious or not.
+
+-> The project is helpful for people to identify and detect the malicious items.
+
+-> When the users want to check or detect the harmful items then it can be implemented.
+
+-> People will be benefited mostly and they can access safest files or URLs.
+
+
+
+
+Technology: 
+
+Frontend Technology:-
+HTML
+CSS
+JavaScript
+
+Backend Technology:-
+Language :- Python(Flask), JAVA
+Programming Language: Machine Learning
+Database:- MongoDB(NoSql) or PostgreSQL
+
+
+
+UML = Unified Modeling Language
+
+USE CASE DIAGRAM:
+explanation:
+1) Here, Client uses the website and Developers used to manage URLs.
+2) Client will create account
+3) then system will validate user credentials.
+4) after creating if user valid is valid then "LOGIN" or-else "user nor valid"
+5) next "Enter URL" to the search bar
+6) next system will analyse the URL and give result .url is malicious or not.
+
+
+
+
+Flow -Diagram:
+Explanation:
+
+1) first, client will perform "Client Entry" by creating account in the system.
+
+2) Next user will SignUP(to sign one's name (as to a contract) in order to obtain, do, or join something.)in the system inside.
+
+3) Click on "Choose Button" for selecting which section want to choose "File button" or "URL button"
+
+4) Next paste the desired URL or upload the file in the system .
+
+5) click on Search Button.
+
+6) Desired result will appear as per client what requested.
+
+7) next customer satisfaction is mandatory for get to know about it.
+
+8) Next after completion of customer task customer can leave the site.
+ 
+
+
+
+ER-Diagram:
+Explanation:
+
+
+1) 
+
+
+
+
+
+
+Advantages: 
+
+1) This website used to provide benefit to the user before accessing the files or URLs.
+
+2)Providing 5 times free uses .
+
+3) After completion it will be applicable for customers when they will take subscription for future use . 
+
+4) Easy to Access.
+
+5) Provide security and safety to the user.
+
+
+
+Limitation of the System: 
+
+1) This website can be access only when user will create account in the website.
+
+2) Multiple time access can make the system slow.
+
+3) Malicious actors continually evolve their techniques. A detection system may struggle to keep up with new and sophisticated threats, requiring constant updates and improvements.
+
+
+
+CONCLUSION:
+
+Hacker Eye website is very useful for a user for detecting which URLs of file is safe to access. 
+Hence, by using this application, we can know the link is safe or not.
+
+
+
+Future work:
+
+1) Have to update new features.
+2) New design of the website.
+3) Adding more and new antiviruses in the website.
+
+
+
+
+
+similar website links for understanding reference: 
+1) https://www.virustotal.com/gui/home/upload
+2) https://hackerseye.net/
+
+
